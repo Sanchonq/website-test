@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ivan Zhang — Clemson computer science student exploring AI research, multimodal media forensics, and traceable data pipelines.">
+  <meta name="theme-color" content="#f7f8fb">
+  <title>Ivan Zhang — Computer Science & AI</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23264fe5'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='white'%3EIZ%3C/text%3E%3C/svg%3E">
+  <style>
+    /* Single-file site. No external fonts, libraries, or build step. */
+    :root{color-scheme:light;--bg:#f7f8fb;--paper:#fff;--ink:#172033;--muted:#536078;--blue:#264fe5;--blue-dark:#183bb7;--soft:#edf1ff;--line:#dce2ed;--radius:20px;--max:1120px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.15;letter-spacing:-.045em}h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:18px}h3{font-size:1.25rem}p{color:var(--muted)}a{color:var(--blue);text-underline-offset:4px}button,input,textarea{font:inherit}button{cursor:pointer}button,a{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid var(--blue);outline-offset:5px}::selection{background:#dbe4ff}ul{padding-left:1.2rem}li+li{margin-top:10px}
+    .container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}.section{padding-block:84px;border-top:1px solid var(--line)}.eyebrow{display:block;margin-bottom:18px;color:var(--blue);font-size:.72rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.intro{max-width:650px;margin-bottom:36px}.intro p{margin-bottom:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip{position:fixed;top:12px;left:12px;z-index:100;padding:10px 18px;background:var(--ink);color:white;border-radius:8px;transform:translateY(-160%)}.skip:focus{transform:translateY(0)}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:48px;padding:12px 20px;border:1px solid transparent;border-radius:9px;color:white;background:var(--blue);text-decoration:none;font-size:.9rem;font-weight:650;transition:transform .2s,background .2s}.button:hover{background:var(--blue-dark);transform:translateY(-2px)}.button.secondary{color:var(--ink);background:white;border-color:var(--line)}.button.secondary:hover{background:var(--soft)}
+    /* Sticky navigation and responsive disclosure. */
+    header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgb(247 248 251 / 96%);backdrop-filter:blur(16px)}.header-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:.98rem;font-weight:750;letter-spacing:-.035em}.logo-icon{display:grid;place-items:center;width:32px;height:32px;background:var(--ink);color:white;border-radius:8px;font-size:.75rem;letter-spacing:-.04em}.nav-list{display:flex;gap:26px;padding:0;margin:0;list-style:none}.nav-list li{margin:0}.nav-list a{display:block;min-height:44px;padding-block:11px;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:600}.nav-list a:hover,.nav-list a[aria-current="location"]{color:var(--blue)}.menu-toggle{display:none;padding:8px 13px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink)}
+    /* Hero and evidence motif. */
+    .hero{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:62px;padding-block:84px 64px}.hero h1{font-size:clamp(3.7rem,7.6vw,6.25rem);font-weight:800;letter-spacing:-.07em;margin-bottom:22px}.hero h1 span{color:var(--blue)}.hero-title{max-width:560px;color:var(--ink);font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:550;line-height:1.35;margin-bottom:20px}.hero-bio{max-width:560px;font-size:.98rem}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.hero-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:24px;color:var(--muted);font-size:.76rem}.hero-meta span{display:flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+    .research-card{position:relative;overflow:hidden;min-height:422px;border-radius:26px;background:var(--blue);color:white;padding:30px;box-shadow:0 18px 40px rgb(38 79 229 / 15%)}.research-card::before{content:"";position:absolute;width:300px;height:300px;border:1px solid rgb(255 255 255 / 18%);border-radius:50%;top:-100px;right:-75px}.research-card::after{content:"";position:absolute;width:210px;height:210px;border:1px solid rgb(255 255 255 / 15%);border-radius:50%;top:-55px;right:-30px}.card-top{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;position:relative;z-index:1}.card-top .arrow{font-size:1.3rem;line-height:1}.monogram{font-size:5.7rem;font-weight:750;letter-spacing:-.08em;line-height:1.2;margin:32px 0 8px}.research-card h2{font-size:1.35rem;letter-spacing:-.035em;margin-bottom:8px}.research-card p{max-width:300px;font-size:.86rem;color:#e3e9ff;margin-bottom:26px}.evidence-flow{border-top:1px solid rgb(255 255 255 / 25%);padding-top:21px;position:relative;z-index:1}.evidence-labels{display:flex;flex-wrap:wrap;gap:7px}.evidence-labels span{padding:5px 10px;border:1px solid rgb(255 255 255 / 35%);border-radius:6px;font-size:.7rem}.evidence-result{display:flex;justify-content:space-between;margin-top:14px;font-size:.75rem;font-weight:650}
+    .focus-strip{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.75rem}.focus-strip strong{color:var(--ink);font-weight:600}.focus-strip .separator{color:#96a2b7}
+    /* About, education, and timeline. */
+    .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:72px}.about-grid p{font-size:1rem}.education{align-self:start;padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}.education .eyebrow{font-size:.65rem;margin-bottom:20px}.education h3{margin-bottom:12px}.education p{margin-bottom:4px}.education .date{font-size:.8rem}.education-line{margin-top:22px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:.75rem}
+    .timeline{margin-left:6px;border-left:2px solid var(--line)}.timeline-item{position:relative;padding:0 0 42px 32px}.timeline-item:last-child{padding-bottom:0}.timeline-item::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border:3px solid var(--bg);border-radius:50%;background:var(--blue);box-shadow:0 0 0 1px var(--blue)}.role-header{display:flex;justify-content:space-between;align-items:baseline;gap:20px}.role-header h3{margin-bottom:8px}.date{color:var(--muted);font-size:.8rem}.role-header .date{flex-shrink:0}.role-type{color:var(--blue);font-size:.8rem;font-weight:650;margin-bottom:12px}.timeline ul{max-width:925px;color:var(--muted);font-size:.92rem;margin-bottom:0}
+    /* Project cards and technology tags. */
+    .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.project{display:flex;flex-direction:column;padding:25px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);transition:transform .2s,box-shadow .2s}.project:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgb(23 32 51 / 7%)}.project-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:26px}.project-index{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;color:var(--blue);background:var(--soft);font-size:.8rem;font-weight:700}.project-category{font-size:.65rem;color:var(--muted)}.project h3{min-height:3.4em;line-height:1.25;margin-bottom:15px;font-size:1.25rem}.project p{font-size:.85rem;margin-bottom:18px}.project-highlight{padding:12px 0;border-block:1px solid var(--line);margin-bottom:18px;font-size:.77rem;color:var(--muted)}.project-highlight strong{display:block;font-size:1.5rem;line-height:1.35;letter-spacing:-.04em;color:var(--ink)}.tags{display:flex;flex-wrap:wrap;gap:7px;padding:0;margin:0;list-style:none}.tags li{margin:0;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:.7rem;line-height:1.5}.project .tags{margin-top:auto}.project-link{display:inline-flex;justify-content:space-between;align-items:center;margin-top:24px;padding-block:10px;border-top:1px solid var(--line);color:var(--blue);font-size:.77rem;font-weight:650;text-decoration:none}.project-link:hover{text-decoration:underline}
+    /* Skill groups and contact form. */
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.skill-group{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:white}.skill-group h3{font-size:1rem;letter-spacing:-.025em;margin-bottom:18px}.skill-group .tags li{font-size:.78rem;padding:5px 10px}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}.contact-copy h2{max-width:450px}.contact-copy>p{max-width:410px}.contact-links{display:grid;gap:9px;margin-top:28px}.contact-email{font-size:clamp(1.05rem,2vw,1.4rem);font-weight:650;letter-spacing:-.025em;overflow-wrap:anywhere}.socials{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:.8rem}.pending{color:var(--muted)}.contact-form{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:white}.field{margin-bottom:18px}label{display:block;font-size:.8rem;font-weight:650;margin-bottom:7px}input,textarea{display:block;width:100%;padding:12px 13px;border:1px solid #a5b2c7;border-radius:8px;color:var(--ink);background:white;font-size:.92rem}textarea{min-height:125px;resize:vertical}.form-note{font-size:.75rem;margin-bottom:18px}.form-status{font-size:.8rem;margin:14px 0 0;color:var(--blue)}.form-status:empty{display:none}.contact-form .button{width:100%}footer{border-top:1px solid var(--line);padding-block:25px}.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:.75rem;color:var(--muted)}.footer-inner p{margin:0}
+    @media(min-width:1500px){.hero{padding-block:106px 78px}}
+    @media(max-width:960px){.hero{gap:30px}.research-card{padding:26px}.project-grid{grid-template-columns:1fr}.project h3{min-height:0}.project-top{margin-bottom:18px}.about-grid,.contact-grid{gap:32px}.project-highlight strong{display:inline;margin-right:10px}.focus-strip{font-size:.7rem}}
+    @media(max-width:720px){.container{width:calc(100% - 36px)}.header-inner{min-height:68px;flex-wrap:wrap;gap:0;padding-block:12px}.menu-toggle{display:block}.site-nav{width:100%}.nav-list{flex-wrap:wrap;gap:2px 20px;padding-top:12px}.js .site-nav{display:none}.js .site-nav.is-open{display:block}.hero,.about-grid,.contact-grid,.skills-grid{grid-template-columns:1fr}.hero{padding-block:54px 30px;gap:32px}.hero h1{font-size:clamp(3.4rem,15vw,5.7rem)}.hero-title{font-size:1.4rem}.research-card{min-height:360px}.monogram{margin-top:24px;font-size:4.7rem}.section{padding-block:56px}.focus-strip{margin-bottom:32px;justify-content:flex-start;gap:8px 18px}.focus-strip .separator{display:none}.role-header{flex-direction:column;gap:0}.role-header .date{margin-bottom:10px}.timeline-item{padding-left:24px}.contact-form{padding:23px}.footer-inner{flex-wrap:wrap}.education{margin-top:0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+    @media print{header,.hero-actions,.contact-form,.skip,.research-card{display:none}body{background:white;font-size:11pt}.container{width:100%}.hero,.section{display:block;padding-block:20px}.project-grid,.about-grid,.skills-grid,.contact-grid{display:block}.project,.skill-group,.education{break-inside:avoid;margin-bottom:16px;box-shadow:none}.focus-strip{margin-bottom:20px}a{color:var(--ink)}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="#home" aria-label="Ivan Zhang, home"><span class="logo-icon" aria-hidden="true">IZ</span>Ivan Zhang</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation"><ul class="nav-list">
+        <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#contact">Contact <span aria-hidden="true">↗</span></a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main">
+    <!-- Hero: biography and title derived from the supplied resume. -->
+    <section class="container hero" id="home" aria-labelledby="hero-heading">
+      <div>
+        <span class="eyebrow">Computer science / Clemson University</span>
+        <h1 id="hero-heading">Ivan Zhang<span>.</span></h1>
+        <p class="hero-title">Turning complex data into evidence you can trace.</p>
+        <p class="hero-bio">I’m a computer science student exploring AI, multimodal media forensics, and reproducible data preparation. My work connects video, audio, text, and source evidence to support clearer analysis and searchable knowledge.</p>
+        <div class="hero-actions"><a class="button" href="#contact">Contact Me <span aria-hidden="true">↗</span></a><a class="button secondary" href="./Ivan%20Zhang%20Resume%202026.pdf" download="Ivan Zhang Resume 2026.pdf">Download Resume <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-meta"><span><i class="dot" aria-hidden="true"></i>Clemson, South Carolina</span><span>AI research & data pipelines</span></div>
+      </div>
+      <aside class="research-card" aria-label="Research focus">
+        <div class="card-top"><span>Research meets implementation</span><span class="arrow" aria-hidden="true">↗</span></div>
+        <div class="monogram" aria-hidden="true">IZ.</div>
+        <h2>Build. Investigate. Validate.</h2>
+        <p>Exploring how AI interprets information—and the evidence behind its answers.</p>
+        <div class="evidence-flow"><div class="evidence-labels"><span>Visual</span><span>Audio</span><span>Transcript</span></div><div class="evidence-result"><span>Connected evidence</span><span aria-hidden="true">→</span></div></div>
+      </aside>
+    </section>
+    <div class="container focus-strip" aria-label="Areas of focus"><strong>AI & multimodal research</strong><span class="separator" aria-hidden="true">/</span><strong>Reproducible experiments</strong><span class="separator" aria-hidden="true">/</span><strong>Cloud data architecture</strong></div>
+
+    <!-- About and education. Preserve the education date range in the resume. -->
+    <section class="section" id="about" aria-labelledby="about-heading"><div class="container about-grid">
+      <div><span class="eyebrow">01 / About</span><h2 id="about-heading">Curiosity, grounded<br>in evidence.</h2><p>I’m interested in how AI systems interpret information and how we can evaluate the claims they produce. At Clemson, my work spans multimodal media forensics, controlled language-model experiments, and the design of searchable email knowledge pipelines.</p><p>I approach these problems through structured data, reproducible preparation, and clear connections to source evidence. My experience includes communicating research through a poster and collaborating with a four-member Agile capstone team.</p></div>
+      <aside class="education" aria-labelledby="education-heading"><span class="eyebrow">Education</span><h3 id="education-heading">Clemson University</h3><p>Computer Science, B.S.</p><p class="date">Fall 2024 – Fall 2027</p><div class="education-line">Research · Experimentation · Collaboration</div></aside>
+    </div></section>
+
+    <!-- Research and capstone experience; no invented employers or dates. -->
+    <section class="section" id="experience" aria-labelledby="experience-heading"><div class="container">
+      <div class="intro"><span class="eyebrow">02 / Experience</span><h2 id="experience-heading">Research & applied work.</h2><p>Exploring model behavior and designing systems that connect information to its source.</p></div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="role-header"><h3>Watt AI Media Forensics</h3><span class="date">Spring 2026 – Current</span></div><p class="role-type">Undergraduate Research</p><ul>
+          <li>Communicated multimodal research methods and findings through a poster explaining how video, audio, and transcript evidence support assessments of tone and intent.</li>
+          <li>Examined how decoding settings, token budgets, and conversation history affect LLM responses through Python/Jupyter experiments with Clemson RCD models.</li>
+          <li>Investigated tool-calling agents, MCP, and multimodal evaluation to identify application safeguards and distinguish valid model outputs from evidence-supported claims.</li>
+        </ul></article>
+        <article class="timeline-item"><div class="role-header"><h3>Azure Email Knowledge Pipeline</h3><span class="date">Current</span></div><p class="role-type">Capstone</p><ul>
+          <li>Designed a three-layer Azure architecture: unchanged originals in Bronze, parsed JSON in Silver, and validated corpus data in Gold.</li>
+          <li>Mapped automated mailbox intake and queued processing using Azure Logic Apps, Blob Storage, Event Grid, Storage Queue, and Functions.</li>
+          <li>Specified an extraction schema and validation approach for Azure OpenAI and Claude, with PostgreSQL/pgvector as the proposed corpus store.</li>
+          <li>Planned permission-aware retrieval using Microsoft Entra ID and PostgreSQL row-level security; coordinated design work in a four-member Agile team through a shared backlog.</li>
+        </ul></article>
+      </div>
+    </div></section>
+
+    <!-- Three documented projects; contact links work until project URLs are supplied. -->
+    <section class="section" id="projects" aria-labelledby="projects-heading"><div class="container">
+      <div class="intro"><span class="eyebrow">03 / Featured projects</span><h2 id="projects-heading">Selected work.</h2><p>From controlled datasets to multimodal analysis and cloud architecture.</p></div>
+      <div class="project-grid">
+        <article class="project"><div class="project-top"><span class="project-index" aria-hidden="true">01</span><span class="project-category">Data & experimentation</span></div><h3>FEVER Counterfactual Pretraining Experiment</h3><p>Prepared balanced FEVER records with evidence resolution and claim-overlap checks across splits. Built an approximately 6 GB CC-News corpus toward a 900M estimated whitespace-token target using exclusions and provenance manifests.</p><div class="project-highlight"><strong>54,000</strong>Balanced FEVER records prepared</div><p>Orchestrated Slurm jobs and froze a 32,000-token BPE vocabulary with two single-token verdict markers.</p><ul class="tags" aria-label="FEVER technologies and methods"><li>Python</li><li>Slurm</li><li>BPE</li><li>MinHash</li></ul><a class="project-link" href="mailto:sanchonq@gmail.com?subject=FEVER%20project%20inquiry">Ask about this project <span aria-hidden="true">↗</span></a></article>
+        <article class="project"><div class="project-top"><span class="project-index" aria-hidden="true">02</span><span class="project-category">Multimodal AI</span></div><h3>Multimodal Media Forensics</h3><p>Developed a Python pipeline using Qwen3 Omni-Thinking and Qwen2.5 72B-Instruct to assess tone and intent in social media videos through visual, audio, and transcript analysis.</p><div class="project-highlight"><strong>Video + audio + text</strong>Connected through structured evidence</div><p>Converted unstructured video into JSON with transcripts, audio features, and speaker labels for a two-part analysis.</p><ul class="tags" aria-label="Media forensics technologies"><li>Python</li><li>JSON</li><li>Qwen3 Omni-Thinking</li><li>Qwen2.5 72B-Instruct</li></ul><a class="project-link" href="mailto:sanchonq@gmail.com?subject=Media%20forensics%20project%20inquiry">Ask about this project <span aria-hidden="true">↗</span></a></article>
+        <article class="project"><div class="project-top"><span class="project-index" aria-hidden="true">03</span><span class="project-category">Capstone architecture</span></div><h3>Azure Email Knowledge Pipeline</h3><p>Designed an architecture to make email knowledge searchable and traceable, with automated intake and queued processing.</p><div class="project-highlight"><strong>Bronze → Silver → Gold</strong>From originals to a validated corpus</div><p>Specified evidence-linked extraction, proposed a PostgreSQL/pgvector corpus store, and planned permission-aware retrieval.</p><ul class="tags" aria-label="Email pipeline designed and proposed technologies"><li>Azure</li><li>Logic Apps</li><li>Azure OpenAI</li><li>Claude</li><li>PostgreSQL / pgvector</li></ul><a class="project-link" href="mailto:sanchonq@gmail.com?subject=Azure%20pipeline%20project%20inquiry">Ask about this project <span aria-hidden="true">↗</span></a></article>
+      </div>
+    </div></section>
+
+    <!-- Skills explicitly listed on the resume. -->
+    <section class="section" id="skills" aria-labelledby="skills-heading"><div class="container">
+      <div class="intro"><span class="eyebrow">04 / Skills & tools</span><h2 id="skills-heading">My working toolkit.</h2></div>
+      <div class="skills-grid">
+        <article class="skill-group"><h3>Languages & data</h3><ul class="tags"><li>Python</li><li>C/C++</li><li>SQL</li><li>Data pipelines</li><li>JSON</li><li>Jupyter</li></ul></article>
+        <article class="skill-group"><h3>Cloud & platforms</h3><ul class="tags"><li>AWS</li><li>Azure</li><li>UNIX</li><li>Slurm</li><li>REST APIs</li><li>OpenAPI Specification</li></ul></article>
+        <article class="skill-group"><h3>Development tools</h3><ul class="tags"><li>Git/GitHub</li><li>JUnit</li><li>IntelliJ</li><li>VS Code</li></ul></article>
+        <article class="skill-group"><h3>Collaboration & languages</h3><ul class="tags"><li>Agile collaboration</li><li>Mandarin — working proficiency</li></ul></article>
+      </div>
+    </div></section>
+
+    <!-- Contact: no backend; the form prepares a real email draft. -->
+    <section class="section" id="contact" aria-labelledby="contact-heading"><div class="container contact-grid">
+      <div class="contact-copy"><span class="eyebrow">05 / Contact</span><h2 id="contact-heading">Let’s start<br>a conversation.</h2><p>Have a question about my work or a project you’d like to discuss? Send me a message.</p><div class="contact-links"><a class="contact-email" href="mailto:sanchonq@gmail.com">sanchonq@gmail.com</a><a href="tel:+19178685273">(917) 868-5273</a></div><div class="socials"><a href="https://github.com/Sanchonq" target="_blank" rel="noopener noreferrer">GitHub ↗</a><!-- Replace this placeholder once a LinkedIn URL is supplied. --><span class="pending">LinkedIn · link pending</span></div></div>
+      <form class="contact-form" id="contact-form" action="mailto:sanchonq@gmail.com" method="get">
+        <div class="field"><label for="contact-name">Your name</label><input id="contact-name" name="name" autocomplete="name" maxlength="100" required></div>
+        <div class="field"><label for="contact-email">Email address</label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" maxlength="4000" required></textarea></div>
+        <p class="form-note" id="form-note">Opens a draft in your email app. Review it there and send when ready.</p><button class="button" type="submit" aria-describedby="form-note">Compose Email <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status" aria-live="polite"></p><noscript><p class="form-note">You can also <a href="mailto:sanchonq@gmail.com">email me directly</a>.</p></noscript>
+      </form>
+    </div></section>
+  </main>
+  <footer><div class="container footer-inner"><p>© <span id="year">2026</span> Ivan Zhang</p><a href="https://github.com/Sanchonq/website-test" target="_blank" rel="noopener noreferrer">Website source ↗</a><a href="#home">Back to top ↑</a></div></footer>
+  <script>
+    "use strict";
+    // Mobile navigation retains a usable fallback when JavaScript is disabled.
+    document.documentElement.classList.add("js");
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.getElementById("site-nav");
+    const links = [...navigation.querySelectorAll("a")];
+    function setMenu(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
+    }
+    menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+    links.forEach(link => link.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") { setMenu(false); menuButton.focus(); }
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+    // Highlight the section in view, without moving keyboard focus.
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          links.forEach(link => {
+            if (link.hash === "#" + entry.target.id) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        });
+      }, {rootMargin: "-15% 0px -65% 0px", threshold: 0});
+      document.querySelectorAll("main section[id]").forEach(section => observer.observe(section));
+    }
+    // Mailto composes a draft; this website does not send or store messages.
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    const nameField = document.getElementById("contact-name");
+    const emailField = document.getElementById("contact-email");
+    const messageField = document.getElementById("contact-message");
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      nameField.setCustomValidity(nameField.value.trim() ? "" : "Please enter your name.");
+      messageField.setCustomValidity(messageField.value.trim() ? "" : "Please enter a message.");
+      if (!form.reportValidity()) return;
+      const subject = "Portfolio inquiry from " + nameField.value.trim();
+      const body = "Name: " + nameField.value.trim() + "\nEmail: " + emailField.value.trim() + "\n\n" + messageField.value.trim();
+      window.location.href = "mailto:sanchonq@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      status.textContent = "Email draft requested. If your email app did not open, email sanchonq@gmail.com directly.";
+    });
+    [nameField, emailField, messageField].forEach(field => field.addEventListener("input", () => { field.setCustomValidity(""); status.textContent = ""; }));
+  </script>
+</body>
+</html>
